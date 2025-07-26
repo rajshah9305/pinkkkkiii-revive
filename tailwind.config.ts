@@ -52,16 +52,25 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				// Ethereal Bloom custom colors
+				'ethereal-pink': 'hsl(var(--ethereal-pink))',
+				'coral-glow': 'hsl(var(--coral-glow))',
+				'mint-cyan': 'hsl(var(--mint-cyan))',
+				'lavender': 'hsl(var(--lavender))',
+				'golden-yellow': 'hsl(var(--golden-yellow))',
+				'warm-gray': 'hsl(var(--warm-gray))',
+				'cosmic-purple': 'hsl(var(--cosmic-purple))',
+				'deep-purple': 'hsl(var(--deep-purple))'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-cosmic': 'var(--gradient-cosmic)',
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-ethereal': 'var(--gradient-ethereal)'
+			},
+			fontFamily: {
+				'display': ['var(--font-display)', 'serif'],
+				'body': ['var(--font-body)', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
