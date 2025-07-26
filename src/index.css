@@ -7,7 +7,7 @@
 /* Ethereal Bloom Design System */
 @layer base {
   :root {
-    /* Brand Colors */
+    /* Enhanced Color Palette for Better Hierarchy */
     --primary-bg: 10 5% 8%;
     --deep-purple: 260 25% 18%;
     --cosmic-purple: 260 35% 30%;
@@ -18,28 +18,50 @@
     --lavender: 291 47% 71%;
     --soft-white: 258 100% 98%;
     --warm-gray: 258 33% 86%;
+    --muted-text: 258 20% 65%;
+    --accent-light: 336 100% 85%;
     
-    /* Glass and Card Effects */
-    --glass-bg: 258 100% 98% / 0.05;
-    --card-bg: 260 25% 18% / 0.8;
+    /* Enhanced Glass and Card Effects */
+    --glass-bg: 258 100% 98% / 0.08;
+    --glass-border: 258 100% 98% / 0.15;
+    --card-bg: 260 25% 18% / 0.85;
+    --card-hover: 260 25% 20% / 0.95;
     
-    /* Shadows and Glows */
-    --shadow-glow: 0 0 40px hsl(336 100% 70% / 0.3);
-    --shadow-deep: 0 20px 60px hsl(0 0% 0% / 0.4);
-    --shadow-elegant: 0 10px 30px hsl(336 100% 70% / 0.2);
+    /* Enhanced Shadows and Glows */
+    --shadow-glow: 0 0 40px hsl(336 100% 70% / 0.4);
+    --shadow-deep: 0 20px 60px hsl(0 0% 0% / 0.5);
+    --shadow-elegant: 0 10px 30px hsl(336 100% 70% / 0.25);
+    --shadow-cosmic: 0 0 100px hsl(174 25% 63% / 0.3);
+    --glow-intense: 0 0 80px hsl(336 100% 70% / 0.6);
     
-    /* Gradients */
+    /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(336 100% 70%), hsl(174 25% 63%));
-    --gradient-cosmic: linear-gradient(135deg, hsl(10 5% 8%) 0%, hsl(260 25% 18%) 50%, hsl(260 35% 30%) 100%);
+    --gradient-cosmic: radial-gradient(circle at 20% 80%, hsl(336 100% 70%) 0%, transparent 40%),
+                       radial-gradient(circle at 80% 20%, hsl(174 25% 63%) 0%, transparent 40%),
+                       radial-gradient(circle at 45% 45%, hsl(291 47% 71%) 0%, transparent 50%),
+                       linear-gradient(135deg, hsl(10 5% 8%) 0%, hsl(260 25% 18%) 50%, hsl(260 35% 30%) 100%);
     --gradient-ethereal: linear-gradient(135deg, hsl(336 100% 70%), hsl(174 25% 63%), hsl(36 100% 75%));
+    --gradient-card: linear-gradient(135deg, hsl(260 25% 18% / 0.9), hsl(260 35% 30% / 0.8));
+    --gradient-text: linear-gradient(135deg, hsl(336 100% 70%), hsl(174 25% 63%), hsl(291 47% 71%));
     
-    /* Animations */
+    /* Enhanced Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     
-    /* Typography */
+    /* Typography Scale for Better Hierarchy */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
+    --scale-xs: clamp(0.75rem, 1vw, 0.875rem);
+    --scale-sm: clamp(0.875rem, 1.2vw, 1rem);
+    --scale-base: clamp(1rem, 1.5vw, 1.125rem);
+    --scale-lg: clamp(1.125rem, 2vw, 1.25rem);
+    --scale-xl: clamp(1.25rem, 2.5vw, 1.5rem);
+    --scale-2xl: clamp(1.5rem, 3vw, 2rem);
+    --scale-3xl: clamp(2rem, 4vw, 2.5rem);
+    --scale-4xl: clamp(2.5rem, 5vw, 3.5rem);
+    --scale-5xl: clamp(3rem, 8vw, 5rem);
+    --scale-6xl: clamp(4rem, 10vw, 6rem);
 
     /* Shadcn compatible colors */
     --background: 10 5% 8%;
@@ -87,25 +109,96 @@
 }
 
 @layer components {
-  /* Cosmic Particles */
+  /* Enhanced Cosmic Particles with Better Visual Hierarchy */
   .cosmic-particles {
-    @apply fixed inset-0 pointer-events-none z-[-1];
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
   }
 
   .cosmic-particle {
-    @apply absolute rounded-full opacity-0 animate-[floatUp_25s_linear_infinite];
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatUp 25s linear infinite;
   }
 
   .particle-small {
-    @apply w-0.5 h-0.5 bg-[hsl(var(--mint-cyan))];
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--mint-cyan));
+    box-shadow: 0 0 6px hsl(var(--mint-cyan));
   }
 
   .particle-medium {
-    @apply w-1 h-1 bg-[hsl(var(--ethereal-pink))];
+    width: 4px;
+    height: 4px;
+    background: hsl(var(--ethereal-pink));
+    box-shadow: 0 0 10px hsl(var(--ethereal-pink));
   }
 
   .particle-large {
-    @apply w-1.5 h-1.5 bg-[hsl(var(--golden-yellow))];
+    width: 6px;
+    height: 6px;
+    background: hsl(var(--golden-yellow));
+    box-shadow: 0 0 15px hsl(var(--golden-yellow));
+  }
+
+  .particle-constellation {
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--lavender));
+    box-shadow: 0 0 20px hsl(var(--lavender)), 0 0 40px hsl(var(--lavender) / 0.3);
+  }
+
+  /* Interactive Background Elements */
+  .cosmic-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  .cosmic-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, hsl(var(--ethereal-pink) / 0.1) 0%, transparent 70%);
+    top: 10%;
+    left: 80%;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, hsl(var(--mint-cyan) / 0.08) 0%, transparent 70%);
+    top: 60%;
+    left: 10%;
+    animation-delay: -7s;
+  }
+
+  .orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, hsl(var(--lavender) / 0.06) 0%, transparent 70%);
+    top: 30%;
+    left: 30%;
+    animation-delay: -14s;
   }
 
   /* Progress Bar */
@@ -149,47 +242,186 @@
     @apply flex gap-5;
   }
 
-  /* Chapter Layout */
+  /* Enhanced Chapter Layout with Better Visual Hierarchy */
   .chapter {
-    @apply min-h-screen flex flex-col items-center justify-center px-[5vw] py-[5vh] text-center relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8vh 5vw;
+    text-align: center;
+    position: relative;
+  }
+
+  .chapter:nth-child(even) {
+    background: linear-gradient(135deg, 
+      hsl(var(--cosmic-purple) / 0.05) 0%, 
+      transparent 50%, 
+      hsl(var(--ethereal-pink) / 0.03) 100%);
   }
 
   .prologue {
-    @apply py-[10vh];
+    padding: 12vh 5vw;
+    background: radial-gradient(ellipse at center, 
+      hsl(var(--ethereal-pink) / 0.1) 0%, 
+      transparent 70%);
   }
 
   .content-box {
-    @apply bg-[hsl(var(--card-bg))] backdrop-blur-[15px] rounded-3xl p-[clamp(30px,5vw,60px)] border border-white/15 shadow-[var(--shadow-deep)] max-w-4xl w-full mx-auto;
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    padding: clamp(40px, 6vw, 80px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-deep), 
+                inset 0 1px 0 hsl(var(--glass-border)),
+                0 0 60px hsl(var(--ethereal-pink) / 0.1);
+    max-w: 5xl;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Typography */
+  .content-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsl(var(--ethereal-pink) / 0.5), 
+      transparent);
+  }
+
+  .content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-deep), 
+                var(--glow-intense),
+                inset 0 1px 0 hsl(var(--glass-border));
+    transition: var(--transition-smooth);
+  }
+
+  /* Enhanced Typography Hierarchy */
   .chapter-number {
-    @apply text-[clamp(0.8rem,1.5vw,1rem)] text-[hsl(var(--ethereal-pink))] uppercase tracking-[3px] mb-4 font-semibold;
+    font-size: var(--scale-sm);
+    color: hsl(var(--ethereal-pink));
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    opacity: 0.8;
+    position: relative;
+  }
+
+  .chapter-number::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: hsl(var(--ethereal-pink));
+    border-radius: 2px;
   }
 
   .chapter-title {
-    @apply font-[family-name:var(--font-display)] text-[clamp(2rem,5vw,3.5rem)] font-semibold mb-6 bg-gradient-to-r from-[hsl(var(--ethereal-pink))] to-[hsl(var(--mint-cyan))] bg-clip-text text-transparent leading-[1.1] relative inline-block;
+    font-family: var(--font-display);
+    font-size: var(--scale-4xl);
+    font-weight: 600;
+    margin-bottom: 32px;
+    background: var(--gradient-text);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+    animation: gradientShift 6s ease-in-out infinite;
   }
 
   .chapter-title::after {
-    @apply content-[''] absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[hsl(var(--ethereal-pink))] to-[hsl(var(--mint-cyan))] rounded-sm;
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 3px;
   }
 
   .chapter-text {
-    @apply text-[clamp(1rem,1.8vw,1.2rem)] leading-[1.7] text-[hsl(var(--warm-gray))] max-w-3xl mx-auto mb-6;
+    font-size: var(--scale-lg);
+    line-height: 1.8;
+    color: hsl(var(--warm-gray));
+    max-width: 65ch;
+    margin: 0 auto 24px;
+    font-weight: 400;
   }
 
-  /* Hero Section */
+  .chapter-text strong {
+    color: hsl(var(--ethereal-pink));
+    font-weight: 600;
+  }
+
+  /* Enhanced Hero Section with Better Visual Hierarchy */
   .hero-content {
-    @apply flex flex-col items-center justify-center max-w-4xl mx-auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .story-title {
-    @apply font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,6rem)] font-normal tracking-tight mb-4 bg-gradient-to-r from-[hsl(var(--ethereal-pink))] via-[hsl(var(--mint-cyan))] to-[hsl(var(--golden-yellow))] bg-[length:300%_300%] bg-clip-text text-transparent animate-[gradientShift_8s_ease-in-out_infinite] leading-[1.1];
+    font-family: var(--font-display);
+    font-size: var(--scale-6xl);
+    font-weight: 400;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    background: var(--gradient-ethereal);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease-in-out infinite;
+    line-height: 1.1;
+    text-shadow: 0 0 80px hsl(var(--ethereal-pink) / 0.3);
+    position: relative;
+  }
+
+  .story-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+    opacity: 0.7;
   }
 
   .story-subtitle {
-    @apply text-[clamp(1.2rem,2.5vw,1.8rem)] font-light text-[hsl(var(--warm-gray))] mb-10 italic max-w-3xl mx-auto;
+    font-size: var(--scale-xl);
+    font-weight: 300;
+    color: hsl(var(--muted-text));
+    margin-bottom: 48px;
+    font-style: italic;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
 
   .begin-journey {
@@ -346,6 +578,40 @@
   @keyframes seedFloat {
     0%, 100% { transform: translateY(0) rotate(-10deg); }
     50% { transform: translateY(-30px) rotate(10deg); }
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    25% { 
+      transform: translate(30px, -20px) scale(1.1);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translate(10px, -40px) scale(0.9);
+      opacity: 0.4;
+    }
+    75% { 
+      transform: translate(-20px, -10px) scale(1.05);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--ethereal-pink) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--ethereal-pink) / 0.6);
+    }
+  }
+
+  @keyframes constellation {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.3; transform: scale(0.8); }
   }
 
   /* Responsive breakpoints */

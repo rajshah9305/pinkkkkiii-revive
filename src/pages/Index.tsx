@@ -3,6 +3,7 @@ import CosmicParticles from '@/components/CosmicParticles';
 import ProgressBar from '@/components/ProgressBar';
 import ChapterNavigation from '@/components/ChapterNavigation';
 import BackToTop from '@/components/BackToTop';
+import InteractiveCursor from '@/components/InteractiveCursor';
 import HeroSection from '@/components/HeroSection';
 import SeedSection from '@/components/SeedSection';
 import GrowthSection from '@/components/GrowthSection';
@@ -36,7 +37,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <InteractiveCursor />
       <CosmicParticles />
       <ProgressBar />
       <ChapterNavigation chapters={chapters} />
