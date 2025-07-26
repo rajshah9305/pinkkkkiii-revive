@@ -123,7 +123,13 @@
   }
 
   .chapter-dot {
-    @apply w-3 h-3 rounded-full bg-white/30 cursor-pointer transition-[var(--transition-bounce)] relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    position: relative;
   }
 
   .chapter-dot.active {
@@ -187,11 +193,40 @@
   }
 
   .begin-journey {
-    @apply bg-gradient-to-br from-[hsl(var(--ethereal-pink))] to-[hsl(var(--coral-glow))] border-none text-white px-10 py-5 rounded-full text-[clamp(1rem,1.5vw,1.2rem)] font-semibold cursor-pointer transition-[var(--transition-bounce)] uppercase tracking-[2px] shadow-[var(--shadow-glow)] relative overflow-hidden z-[1] hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_60px_hsl(var(--ethereal-pink)/0.5)];
+    background: linear-gradient(135deg, hsl(var(--ethereal-pink)), hsl(var(--coral-glow)));
+    border: none;
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .begin-journey:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 0 60px hsl(var(--ethereal-pink) / 0.5);
   }
 
   .begin-journey::before {
-    @apply content-[''] absolute inset-0 bg-gradient-to-br from-[hsl(var(--mint-cyan))] to-[hsl(var(--lavender))] z-[-1] opacity-0 transition-[var(--transition-smooth)] hover:opacity-100;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--mint-cyan)), hsl(var(--lavender)));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .begin-journey:hover::before {
+    opacity: 1;
   }
 
   /* Interactive Sections */
@@ -200,15 +235,30 @@
   }
 
   .plant-stem {
-    @apply w-2 h-0 bg-gradient-to-t from-[hsl(var(--mint-cyan))] to-[hsl(var(--golden-yellow))] rounded-t-2xl transition-[height] duration-[4s] ease-[cubic-bezier(0.4,0,0.2,1)] relative;
+    width: 8px;
+    height: 0;
+    background: linear-gradient(to top, hsl(var(--mint-cyan)), hsl(var(--golden-yellow)));
+    border-radius: 8px 8px 0 0;
+    transition: height 4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
   }
 
   .chapter-growth.visible .plant-stem {
-    @apply h-[80%];
+    height: 80%;
   }
 
   .plant-stem::after {
-    @apply content-[''] absolute top-0 -left-4 w-9 h-9 bg-gradient-radial from-[hsl(var(--lavender))] to-[hsl(var(--cosmic-purple))] rounded-full shadow-[0_0_30px_hsl(var(--ethereal-pink))] scale-0 transition-transform duration-1000 ease-in-out delay-[3.5s];
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -16px;
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle at center, hsl(var(--lavender)) 20%, hsl(var(--cosmic-purple)) 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px hsl(var(--ethereal-pink));
+    transform: scale(0);
+    transition: transform 1s ease-in-out 3.5s;
   }
 
   .chapter-growth.visible .plant-stem::after {
@@ -221,15 +271,19 @@
   }
 
   .sense-card {
-    @apply bg-[hsl(var(--card-bg))] rounded-2xl p-8 border border-white/10 border-t-[3px] transition-[var(--transition-smooth)] relative overflow-hidden hover:-translate-y-3;
-  }
-
-  .sense-card::before {
-    @apply content-[''] absolute inset-0 bg-gradient-to-br from-[var(--accent-color,hsl(var(--ethereal-pink)))] to-transparent opacity-10 z-[-1];
+    background: hsl(var(--card-bg));
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--accent-color, hsl(var(--ethereal-pink)));
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
   }
 
   .sense-card:hover {
-    @apply shadow-[0_0_40px_var(--accent-color,hsl(var(--ethereal-pink)))];
+    transform: translateY(-12px);
+    box-shadow: 0 0 40px var(--accent-color, hsl(var(--ethereal-pink)));
   }
 
   .sense-card h3 {
@@ -238,20 +292,42 @@
 
   /* Animations */
   .fade-in {
-    @apply opacity-0 translate-y-8 transition-[opacity,transform] duration-800 ease-[cubic-bezier(0.4,0,0.2,1)] delay-200;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
   }
 
   .fade-in.visible {
-    @apply opacity-100 translate-y-0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Back to Top */
   .back-to-top {
-    @apply fixed bottom-8 right-8 w-12 h-12 rounded-full bg-[hsl(var(--ethereal-pink))] text-white flex items-center justify-center text-xl cursor-pointer z-[1000] opacity-0 translate-y-5 transition-[var(--transition-smooth)] shadow-[0_0_20px_hsl(var(--ethereal-pink)/0.5)];
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: hsl(var(--ethereal-pink));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+    box-shadow: 0 0 20px hsl(var(--ethereal-pink) / 0.5);
   }
 
   .back-to-top.visible {
-    @apply opacity-100 translate-y-0;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -321,7 +397,11 @@
     }
 
     .back-to-top {
-      @apply bottom-5 right-5 w-10 h-10 text-base;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
     }
   }
 
